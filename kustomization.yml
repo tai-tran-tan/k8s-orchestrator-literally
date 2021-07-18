@@ -1,4 +1,5 @@
 resources:
   - ./violin/violin.yml
   - ./flute/flute.yml
+  - ./composer/composer.yml
   - ./istio-gateway.yml

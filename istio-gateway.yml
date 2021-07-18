@@ -43,3 +43,13 @@ spec:
         host: flute
         port:
           number: 8080
+  - match:
+    - uri:
+        prefix: /api/v1/composer
+    rewrite:
+      uri: /api/v1/services
+    route:
+    - destination:
+        host: composer
+        port:
+          number: 8080

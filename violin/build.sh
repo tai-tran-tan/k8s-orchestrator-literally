@@ -1,1 +1,1 @@
-docker build -t violin-app:v2 .
+docker build -t violin-app:v1 .
