@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: composer
+spec:
+  selector:
+    matchLabels:
+      app: composer
+      tier: backend
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: composer
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: composer-app
+          image: composer-app:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: composer
+spec:
+  selector:
+    app: composer
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: http
+---

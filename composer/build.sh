@@ -1,0 +1,1 @@
+docker build -t composer-app:v1 .
