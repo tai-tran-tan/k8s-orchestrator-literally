@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: violin
+spec:
+  selector:
+    matchLabels:
+      app: violin
+      tier: backend
+      track: stable
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: violin
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: violin-app
+          image: violin-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: violin
+spec:
+  selector:
+    app: violin
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http
+---
