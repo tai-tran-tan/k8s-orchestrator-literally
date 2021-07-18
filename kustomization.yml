@@ -1,0 +1,4 @@
+resources:
+  - ./violin/violin.yml
+  - ./flute/flute.yml
+  - ./istio-gateway.yml

@@ -1,0 +1,45 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: istio-gwy
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: istio-vs
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-gwy
+  http:
+  - match:
+    - uri:
+        prefix: /api/v1/violin
+    rewrite:
+      uri: /api/v1/services
+    route:
+    - destination:
+        host: violin
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: /api/v1/flute
+    rewrite:
+      uri: /api/v1/services
+    route:
+    - destination:
+        host: flute
+        port:
+          number: 8080

@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: violin-app
-          image: violin-app:v1
+          image: violin-app:v2
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -39,6 +39,6 @@ spec:
     tier: backend
   ports:
   - protocol: TCP
-    port: 80
+    port: 8080
     targetPort: http
 ---
