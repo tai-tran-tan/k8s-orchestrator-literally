@@ -1,0 +1,1 @@
+docker build -t flute-app:v1 .

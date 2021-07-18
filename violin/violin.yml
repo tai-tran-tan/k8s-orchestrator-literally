@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: violin-app
-          image: violin-app:latest
+          image: violin-app:v1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
