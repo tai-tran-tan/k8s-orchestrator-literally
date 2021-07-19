@@ -3,6 +3,8 @@ cd violin
 ./build.sh
 cd flute
 ./build.sh
+cd composer
+./build.sh
 
 #Install istio
 https://istio.io/latest/docs/setup/getting-started/
